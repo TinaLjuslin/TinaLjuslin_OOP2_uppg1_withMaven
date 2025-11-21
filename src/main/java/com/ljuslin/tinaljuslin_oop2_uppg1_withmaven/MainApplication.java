@@ -74,6 +74,7 @@ public class MainApplication extends Application {
         hBoxButtonsPersons.getChildren().addAll(buttonSavePerson, buttonGetAllPersons);
         VBox vBoxGetPerson = new VBox();
         vBoxGetPerson.setSpacing(10);
+        vBoxGetPerson.setPadding(new Insets(10));
         vBoxGetPerson.getChildren().addAll(labelFirstname, textFirstName, labelLastname,
                 textLastName, labelPhoneNumber, textPhoneNumber, labelAddress,
                 textAddress, hBoxButtonsPersons);
@@ -107,6 +108,7 @@ public class MainApplication extends Application {
         vBoxPersons.setSpacing(20);
         vBoxPersons.setAlignment(Pos.CENTER);
         vBoxPersons.getChildren().addAll(vBoxGetPerson, vBoxShowPerson);
+        vBoxPersons.setPadding(new Insets(10));
         tabPersons.setContent(vBoxPersons);
         Scene sceneRoot = new Scene(tabPane, 500, 500);
         primaryStage.setScene(sceneRoot);
@@ -150,9 +152,6 @@ public class MainApplication extends Application {
                 } catch (InterruptedException e) {
                 }
                 int h, min, sec;
-                //kolla att den inte blivit resetad när denna tråd sover, då skriver den ut
-                // 00:00:01, eller hoppar över en sekund om man tryckt på stop
-                //finns det ett bättre sätt?
                 if (timerRunning) {
                     if (seconds.get() == 59) {
                         seconds.set(0);
